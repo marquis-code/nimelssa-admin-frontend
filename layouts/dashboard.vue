@@ -36,7 +36,7 @@
                         Dashboard
                       </NuxtLink>
                     </li>
-                    <li>
+                    <!-- <li>
                       <NuxtLink to="/dashboard/users" @click.prevent="isOpen = false"
                         class="text-gray-700 hover:text-indigo-600 hover:bg-gray-50 group flex gap-x-3 rounded-md p-2 py-3 text-base leading-6 font-semibold">
                         <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -46,8 +46,8 @@
                         </svg>
                         Users
                       </NuxtLink>
-                    </li>
-                    <li>
+                    </li> -->
+                    <!-- <li>
                       <NuxtLink to="/dashboard/pods" @click.prevent="isOpen = false"
                         class="text-gray-700 hover:text-indigo-600 hover:bg-gray-50 group flex gap-x-3 rounded-md p-2 py-3 text-base leading-6 font-semibold">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -65,33 +65,21 @@
                             d="M21 6H3C2.44772 6 2 6.44772 2 7V17C2 17.5523 2.44772 18 3 18H21C21.5523 18 22 17.5523 22 17V7C22 6.44772 21.5523 6 21 6Z"
                             stroke="#667085" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
-                        Pods
+                        Quiz
                       </NuxtLink>
-                    </li>
+                    </li> -->
                     <li>
-                      <NuxtLink to="/dashboard/notify" @click.prevent="isOpen = false"
+                      <NuxtLink to="/dashboard/election" @click.prevent="isOpen = false"
                         class="text-gray-700 hover:text-indigo-600 hover:bg-gray-50 group flex gap-x-3 rounded-md p-2 py-3 text-base leading-6 font-semibold">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                           stroke="#4a4a4a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                           <path d="M22 17H2a3 3 0 0 0 3-3V9a7 7 0 0 1 14 0v5a3 3 0 0 0 3 3zm-8.27 4a2 2 0 0 1-3.46 0">
                           </path>
                         </svg>
-                        Notify
+                        Election
                       </NuxtLink>
                     </li>
-                    <li>
-                      <a href="#" @click.prevent="isOpen = false"
-                        class="text-gray-700 hover:text-indigo-600 hover:bg-gray-50 group flex gap-x-3 rounded-md p-2 py-3 text-base leading-6 font-semibold">
-                        <!-- <svg class="h-6 w-6 shrink-0 text-gray-400 group-hover:text-indigo-600" fill="none"
-                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                          d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 01-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 011.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 00-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 01-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 00-3.375-3.375h-1.5a1.125 1.125 0 01-1.125-1.125v-1.5a3.375 3.375 0 00-3.375-3.375H9.75" />
-                      </svg> -->
-                        <img src="https://homepod-admin.netlify.app/_nuxt/img/ad.add5ead.svg" />
-                        Ad Service
-                      </a>
-                    </li>
-                    <li>
+                    <!-- <li>
                       <NuxtLink to="/dashboard/admin" @click.prevent="isOpen = false"
                         class="text-gray-700 hover:text-indigo-600 hover:bg-gray-50 group flex gap-x-3 rounded-md p-2 py-3 text-base leading-6 font-semibold">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -111,8 +99,8 @@
                         </svg>
                         Admin
                       </NuxtLink>
-                    </li>
-
+                    </li> -->
+<!-- 
                     <li>
                       <NuxtLink to="/dashboard/configuration" @click.prevent="isOpen = false"
                         class="text-gray-700 hover:text-indigo-600 hover:bg-gray-50 group flex gap-x-3 rounded-md p-2 py-3 text-base leading-6 font-semibold">
@@ -141,9 +129,9 @@
                         </svg>
                         Configuration
                       </NuxtLink>
-                    </li>
+                    </li> -->
 
-                    <li>
+                    <!-- <li>
                       <NuxtLink to="/dashboard/ads" @click.prevent="isOpen = false"
                         class="text-gray-700 hover:text-indigo-600 hover:bg-gray-50 group flex gap-x-3 rounded-md p-2 py-3 text-base leading-6 font-semibold">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -171,7 +159,7 @@
                         </svg>
                         Sponsored Ads
                       </NuxtLink>
-                    </li>
+                    </li> -->
                   </ul>
                 </li>
                 <li class="mt-auto">
@@ -196,7 +184,7 @@
       <!-- Sidebar component, swap this element with another sidebar if you like -->
       <div class="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6 pb-4">
         <div class="flex h-16 shrink-0 items-center">
-          <img class="h-8 w-auto" src="@/assets/icons/homepod-black.svg" alt="Your Company">
+          <img class="h-8 w-auto" src="@/assets/img/transparent-logo.png" alt="Your Company">
         </div>
         <nav class="flex flex-1 flex-col">
           <ul role="list" class="flex flex-1 flex-col gap-y-7">
@@ -214,7 +202,7 @@
                     Dashboard
                   </NuxtLink>
                 </li>
-                <li>
+                <!-- <li>
                   <NuxtLink to="/dashboard/users"
                     class="flex w-full text-gray-700 items-center gap-x-3 no-underline rounded-md px-3 py-2.5 leading-loose">
                     <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -225,8 +213,8 @@
 
                     Users
                   </NuxtLink>
-                </li>
-                <li>
+                </li> -->
+                <!-- <li>
                   <NuxtLink to="/dashboard/pods"
                     class="flex w-full text-gray-700 items-center gap-x-3 no-underline rounded-md px-3 py-2.5 leading-loose">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -245,11 +233,11 @@
                         stroke="#667085" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
 
-                    Pods
+                    Quiz
                   </NuxtLink>
-                </li>
+                </li> -->
                 <li>
-                  <NuxtLink to="/dashboard/notify"
+                  <NuxtLink to="/dashboard/election"
                     class="flex w-full text-gray-700 items-center gap-x-3 no-underline rounded-md px-3 py-2.5 leading-loose">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                       stroke="#4a4a4a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -257,10 +245,10 @@
                       </path>
                     </svg>
 
-                    Notify
+                    Elections
                   </NuxtLink>
                 </li>
-                <li>
+                <!-- <li>
                   <NuxtLink to="/dashboard/admin"
                     class="flex w-full text-gray-700 items-center gap-x-3 no-underline rounded-md px-3 py-2.5 leading-loose">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -280,98 +268,9 @@
                     </svg>
                     Admin
                   </NuxtLink>
-                </li>
-                <li>
-                  <NuxtLink to="/dashboard/configuration"
-                    class="text-gray-700 hover:text-indigo-600 hover:bg-gray-50 group flex gap-x-3 rounded-md p-2 py-3 text-sm leading-6 font-semibold">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M11.667 15L17.5003 15" stroke="#667085" stroke-width="1.5" stroke-linecap="round"
-                        stroke-linejoin="round" />
-                      <path d="M2.5 15H4.16667" stroke="#667085" stroke-width="1.5" stroke-linecap="round"
-                        stroke-linejoin="round" />
-                      <path
-                        d="M6.25033 17.0833C7.40092 17.0833 8.33366 16.1506 8.33366 15C8.33366 13.8494 7.40092 12.9167 6.25033 12.9167C5.09973 12.9167 4.16699 13.8494 4.16699 15C4.16699 16.1506 5.09973 17.0833 6.25033 17.0833Z"
-                        stroke="#667085" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                      <path d="M16.667 10H17.5003" stroke="#667085" stroke-width="1.5" stroke-linecap="round"
-                        stroke-linejoin="round" />
-                      <path d="M2.5 10H8.33333" stroke="#667085" stroke-width="1.5" stroke-linecap="round"
-                        stroke-linejoin="round" />
-                      <path
-                        d="M13.7503 12.0833C14.9009 12.0833 15.8337 11.1506 15.8337 9.99999C15.8337 8.8494 14.9009 7.91666 13.7503 7.91666C12.5997 7.91666 11.667 8.8494 11.667 9.99999C11.667 11.1506 12.5997 12.0833 13.7503 12.0833Z"
-                        stroke="#667085" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                      <path d="M10.833 5H17.4997" stroke="#667085" stroke-width="1.5" stroke-linecap="round"
-                        stroke-linejoin="round" />
-                      <path d="M2.5 5H3.33333" stroke="#667085" stroke-width="1.5" stroke-linecap="round"
-                        stroke-linejoin="round" />
-                      <path
-                        d="M8.75033 7.08332C9.90092 7.08332 10.8337 6.15058 10.8337 4.99999C10.8337 3.8494 9.90092 2.91666 8.75033 2.91666C7.59973 2.91666 6.66699 3.8494 6.66699 4.99999C6.66699 6.15058 7.59973 7.08332 8.75033 7.08332Z"
-                        stroke="#667085" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-
-                    Configuration
-                  </NuxtLink>
-                </li>
-                <li>
-                  <NuxtLink to="/dashboard/ads"
-                    class="text-gray-700 hover:text-indigo-600 hover:bg-gray-50 group flex gap-x-3 rounded-md p-2 py-3 text-sm leading-6 font-semibold">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M11.667 15L17.5003 15" stroke="#667085" stroke-width="1.5" stroke-linecap="round"
-                        stroke-linejoin="round" />
-                      <path d="M2.5 15H4.16667" stroke="#667085" stroke-width="1.5" stroke-linecap="round"
-                        stroke-linejoin="round" />
-                      <path
-                        d="M6.25033 17.0833C7.40092 17.0833 8.33366 16.1506 8.33366 15C8.33366 13.8494 7.40092 12.9167 6.25033 12.9167C5.09973 12.9167 4.16699 13.8494 4.16699 15C4.16699 16.1506 5.09973 17.0833 6.25033 17.0833Z"
-                        stroke="#667085" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                      <path d="M16.667 10H17.5003" stroke="#667085" stroke-width="1.5" stroke-linecap="round"
-                        stroke-linejoin="round" />
-                      <path d="M2.5 10H8.33333" stroke="#667085" stroke-width="1.5" stroke-linecap="round"
-                        stroke-linejoin="round" />
-                      <path
-                        d="M13.7503 12.0833C14.9009 12.0833 15.8337 11.1506 15.8337 9.99999C15.8337 8.8494 14.9009 7.91666 13.7503 7.91666C12.5997 7.91666 11.667 8.8494 11.667 9.99999C11.667 11.1506 12.5997 12.0833 13.7503 12.0833Z"
-                        stroke="#667085" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                      <path d="M10.833 5H17.4997" stroke="#667085" stroke-width="1.5" stroke-linecap="round"
-                        stroke-linejoin="round" />
-                      <path d="M2.5 5H3.33333" stroke="#667085" stroke-width="1.5" stroke-linecap="round"
-                        stroke-linejoin="round" />
-                      <path
-                        d="M8.75033 7.08332C9.90092 7.08332 10.8337 6.15058 10.8337 4.99999C10.8337 3.8494 9.90092 2.91666 8.75033 2.91666C7.59973 2.91666 6.66699 3.8494 6.66699 4.99999C6.66699 6.15058 7.59973 7.08332 8.75033 7.08332Z"
-                        stroke="#667085" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-
-                    Sponsored Ads
-                  </NuxtLink>
-                </li>
+                </li> -->
               </ul>
             </li>
-            <!-- <li>
-              <div class="text-xs font-semibold leading-6 text-gray-400">Your teams</div>
-              <ul role="list" class="-mx-2 mt-2 space-y-1">
-                <li>
-                  <a href="#"
-                    class="text-gray-700 hover:text-indigo-600 hover:bg-gray-50 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold">
-                    <span
-                      class="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border text-[0.625rem] font-medium bg-white text-gray-400 border-gray-200 group-hover:border-indigo-600 group-hover:text-indigo-600">H</span>
-                    <span class="truncate">Heroicons</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#"
-                    class="text-gray-700 hover:text-indigo-600 hover:bg-gray-50 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold">
-                    <span
-                      class="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border text-[0.625rem] font-medium bg-white text-gray-400 border-gray-200 group-hover:border-indigo-600 group-hover:text-indigo-600">T</span>
-                    <span class="truncate">Tailwind Labs</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#"
-                    class="text-gray-700 hover:text-indigo-600 hover:bg-gray-50 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold">
-                    <span
-                      class="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border text-[0.625rem] font-medium bg-white text-gray-400 border-gray-200 group-hover:border-indigo-600 group-hover:text-indigo-600">W</span>
-                    <span class="truncate">Workcation</span>
-                  </a>
-                </li>
-              </ul>
-            </li> -->
             <li class="mt-auto">
               <a href="#" @click.prevent="logOut"
                 class="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-700 hover:bg-gray-50 hover:text-indigo-600">

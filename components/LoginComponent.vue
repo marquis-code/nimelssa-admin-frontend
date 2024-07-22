@@ -9,13 +9,24 @@
             <p class="text-sm text-white">Enter your credentials to login</p>
           </div>
           <div class="col-span-6 w-full">
-            <label for="username" class="block text-sm font-medium text-white">
-              username
+            <label for="matric" class="block text-sm font-medium text-white">
+              matric
             </label>
 
-            <input id="username" v-model="loginPayload.username" type="text" name="username"
-              placeholder="Enter Your username..."
+            <input id="matric" v-model="loginPayload.matric" type="number" name="matric"
+            @input="validateMatricNumber"
+                  :class="{
+                    'border-red-500': !isMatricValid && isTyping,
+                    'border-gray-300': isMatricValid || !isTyping,
+                  }"
+              placeholder="Enter Your matric..."
               class="mt-1 w-full rounded-md border border-gray-200 bg-white px-3 py-3.5 text-sm text-gray-700 shadow-sm outline-none" />
+              <p
+              v-if="!isMatricValid && isTyping"
+              class="mt-1 text-sm text-red-500"
+            >
+              Invalid matric number
+            </p>
           </div>
 
           <div class="relative col-span-6 w-full">
@@ -31,9 +42,9 @@
             <img v-if="!showPassword" src="@/assets/icons/eye-close.svg" alt=""
               class="absolute right-4 top-10 h-6 w-6 cursor-pointer" @click="showPassword = !showPassword" />
             <div class="flex items-end justify-end pt-3">
-              <button class="text-sm font-medium text-gray-600" @click="setActiveTab">
+              <!-- <button class="text-sm font-medium text-gray-600" @click="setActiveTab">
                 Forgot Password?
-              </button>
+              </button> -->
             </div>
           </div>
           <div class="w-full pt-10">
@@ -58,16 +69,22 @@ const emit = defineEmits<{
   (event: 'forgotPassword', value: boolean): void
 }>()
 
+const isTyping = ref(false)
+
 const processing = ref(false)
 const showPassword = ref(false)
-const form = ref({
-  username: "",
-  password: "",
-})
 
 const isFormEmpty = (() => {
-  return !!(form.value.username && form.value.password);
+  return !!(loginPayload.value.matric && loginPayload.value.password && isMatricValid.value);
 })
+
+const validateMatricNumber = () => {
+      isTyping.value = true;
+    }
+
+const isMatricValid = computed(() => {
+      return /^\d{9}$/.test(loginPayload.value.matric);
+    })
 
 const setActiveTab = () => {
   emit("forgotPassword");
@@ -77,3 +94,17 @@ watch(processing, (val) => {
   emit("processLogin", val);
 })
 </script>
+
+
+<style>
+/* Custom CSS to hide the arrows */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield; /* Hides the arrows in Firefox */
+}
+</style>

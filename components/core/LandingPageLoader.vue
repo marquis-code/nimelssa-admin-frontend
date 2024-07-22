@@ -1,7 +1,7 @@
 <template>
   <div v-if="show" class="fixed inset-0 bg-black bg-opacity-100 flex justify-center items-center z-50">
     <div class="flex flex-col items-center">
-      <img src="@/assets/img/homepod.png" alt="Descriptive Alt Text" class="scale-in-out h-60 w-full" />
+      <img src="@/assets/img/transparent-logo.png" alt="Descriptive Alt Text" class="scale-in-out h-60 w-full" />
     </div>
   </div>
 </template>

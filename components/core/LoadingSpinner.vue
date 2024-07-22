@@ -3,7 +3,7 @@
     class="fixed inset-0 z-50 flex flex-col items-center justify-center gap-y-3 bg-black bg-opacity-50 backdrop-blur-sm">
     <div class="spinner z-50 h-12 w-12 animate-spin rounded-full border-4 border-t-4 border-gray-300 border-t-blue-500">
     </div>
-    <p class="z-50 leading-loose text-white">Logging in to Homepod</p>
+    <p class="z-50 leading-loose text-white">Logging in to NIMELSSA Admin</p>
   </div>
 </template>
 <script lang="ts" setup>

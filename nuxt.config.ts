@@ -3,7 +3,7 @@ export default {
   target: "static",
   app: {
     head: {
-      title: "Homepod - Storipod Admin Platform",
+      title: "NIMELSSA Admin Dashboard",
       htmlAttrs: { lang: "en" },
       meta: [
         { charset: "utf-8" },

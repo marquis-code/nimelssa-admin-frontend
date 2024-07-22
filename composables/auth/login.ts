@@ -5,13 +5,13 @@ import Swal from "sweetalert2";
 const runtimeData = {
   user: ref({} as any),
   token: ref(""),
-  expiry: ref("")
+  // expiry: ref("")
 };
 const router = useRouter();
 const localstorageData = {
   user: useStorage("user", {} as any),
   token: useStorage("token", ""),
-  expiry: useStorage("expiry", ""),
+  // expiry: useStorage("expiry", ""),
 };
 watch(
   runtimeData.user,
@@ -29,7 +29,7 @@ watch(
 })();
 
 const loginPayload = ref({
-  username: "",
+  matric: "",
   password: "",
 });
 export const useLogin = () => {
@@ -38,13 +38,13 @@ export const useLogin = () => {
     loading.value = true;
     try {
       const payload = {
-        username: loginPayload.value.username,
+        matric: loginPayload.value.matric,
         password: loginPayload.value.password,
       };
       const response = await authApiFactory.login(payload);
       runtimeData.user.value = response.data.user;
-      localstorageData.token.value = response.data?.token.accessToken;
-      localstorageData.expiry.value = response.data?.token.expiresIn
+      localstorageData.token.value = response.data?.token;
+      // localstorageData.expiry.value = response.data?.token.expiresIn
       localstorageData.user.value = response.data?.user
       runtimeData.token.value = response.data?.token;
       useNuxtApp().$toast.success("Welcome back.", {
@@ -53,11 +53,13 @@ export const useLogin = () => {
       });
       useRouter().push("/dashboard");
       return response.data;
-    } catch (error) {
-      useNuxtApp().$toast.error("Something went wrong!", {
-        autoClose: 5000,
-        dangerouslyHTMLString: true,
-      });
+    } catch (error: any) {
+      if(typeof error.response !== 'undefined'){
+        useNuxtApp().$toast.error("Something Went Wrong!", {
+          autoClose: 5000,
+          dangerouslyHTMLString: true,
+        });
+      }
       return error;
     } finally {
       loading.value = false;
@@ -118,7 +120,7 @@ export const useLogin = () => {
     set: () => {},
   });
   const isFormEmpty = computed(() => {
-    return !!(loginPayload.value.username && loginPayload.value.password);
+    return !!(loginPayload.value.matric && loginPayload.value.password);
   });
 
   return {

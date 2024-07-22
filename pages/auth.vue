@@ -14,8 +14,8 @@
                     class="relative hidden h-32 items-center justify-center bg-[#EBFFFF] lg:col-span-5 lg:flex lg:h-full xl:col-span-6">
                     <div class="absolute right-10 top-4 flex items-end justify-end">
                         <div class="flex items-center gap-x-10">
-                            <nuxt-link class="no-underline text-gray-800" to="#">Terms</nuxt-link>
-                            <nuxt-link class="no-underline text-gray-800" to="#">Privacy</nuxt-link>
+                            <!-- <NuxtLink to="/" class="no-underline text-gray-800">Terms</NuxtLink>
+                            <NuxtLink to="/" class="no-underline text-gray-800">Privacy</NuxtLink> -->
                         </div>
                     </div>
                     <div class="flex flex-col items-center justify-center">
@@ -23,16 +23,17 @@
                             class="text-lg font-medium leading-loose tracking-wider py-0 my-0">
                             “Transforming data into actionable insights.”
                         </p>
-                        <!-- <div class=""> -->
-                        <img alt="Login Animated Image" src="@/assets/icons/animated-login.svg"
-                            class="object-cover object-center" />
-                        <!-- </div> -->
+                        <img
+                        alt="Login Animated Image"
+                        src="@/assets/img/transparent-logo.png"
+                        class="object-cover object-center"
+                      />
                         <div v-if="route.query.page === 'login'" class="">
                             <h2 class="mt-6 text-center text-2xl font-bold sm:text-3xl md:text-xl">
                                 Read. Write . Create
                             </h2>
                             <p class="mt-0 text-center leading-relaxed text-[#737876]">
-                                Homepod Tells us about Storipod and Storipod is feeling
+                                MY NIMELSSA, YOUR NIMELSSA, OUR NIMELSSA.
                             </p>
                         </div>
                         <p v-else-if="route.query.page === 'forgot'"
