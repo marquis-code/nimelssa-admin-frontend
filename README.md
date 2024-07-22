@@ -1,1 +1,1 @@
-Homepod - Storipod Admin Platform
+Nimelssa Admin Web project
