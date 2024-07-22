@@ -11,7 +11,7 @@
                 :class="[ route.query.type === 'registered' ? 'bg-indigo-100 text-indigo-600' : 'border-transparent text-gray-500 hover:border-gray-200 hover:text-gray-700']"
                 class="flex cursor-pointer whitespace-nowrap border-b-2 border-transparent px-3 py-3 text-sm font-medium text-gray-500 hover:border-gray-200 hover:text-gray-700"
               >
-                Registered Voters
+                Total Users
                 <!-- Current: "bg-indigo-100 text-indigo-600", Default: "bg-gray-100 text-gray-900" -->
                 <span
                   class="ml-3 hidden rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-900 md:inline-block"
@@ -66,8 +66,8 @@
           <div class="sm:flex-auto">
             <h1 class="text-base font-semibold leading-6 text-gray-900">{{computedTitle}}</h1>
             <p class="mt-2 text-sm text-gray-700">
-              A list of all the users in your account including their name, title,
-              email and role.
+              A list of all the users in NIMELSSA including their name, matric,
+              level and status.
             </p>
           </div>
           <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
@@ -111,7 +111,7 @@ const handleTab = (item: string) => {
 
 const computedTitle = computed(() => {
    const titleMap = {
-    registered: 'Registered Voters',
+    registered: 'Total Users',
     approved: 'Approved Voters',
     rejected: 'Rejected Voters',
     invalid: 'Invalid Voters'

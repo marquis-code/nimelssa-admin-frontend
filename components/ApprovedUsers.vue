@@ -106,7 +106,7 @@ const props = defineProps({
 
 // const computedTitle = computed(() => {
 //  const titleMap = {
-//   registered: 'Registered Voters',
+//   registered: 'Total Users',
 //   approved: 'Approved Voters',
 //   rejected: 'Rejected Voters',
 //   invalid: 'Invalid Voters'

@@ -38,7 +38,7 @@ export const useLogin = () => {
     loading.value = true;
     try {
       const payload = {
-        matric: loginPayload.value.matric,
+        matric: String(loginPayload.value.matric),
         password: loginPayload.value.password,
       };
       const response = await authApiFactory.login(payload);
