@@ -3,7 +3,7 @@
       <div>
         <div class="">
           <div class="border-b border-gray-200 border rounded-t-lg">
-            <nav class="-mb-px flex space-x-8" aria-label="Tabs">
+            <nav class="-mb-px grid grid-cols-2 lg:grid-cols-3 gap-6" aria-label="Tabs">
               <!-- Current: "border-indigo-500 text-indigo-600", Default: "border-transparent text-gray-500 hover:border-gray-200 hover:text-gray-700" -->
               <a
                 href.prevent="#"
@@ -43,20 +43,6 @@
                   >{{ notApprovedUsers.length ?? 0}}</span
                 >
               </a>
-
-              <!-- <a
-              href.prevent="#"
-              @click="handleTab('invalid')"
-              :class="[ route.query.type === 'invalid' ? 'bg-indigo-100 text-indigo-600' : 'border-transparent text-gray-500 hover:border-gray-200 hover:text-gray-700']"
-              class="flex cursor-pointer whitespace-nowrap border-b-2 border-indigo-500 px-3 rounded-t-xl py-3 text-sm font-medium text-indigo-600"
-              aria-current="page"
-            >
-              Invalid Voters
-              <span
-                class="ml-3 hidden rounded-full bg-indigo-100 px-2.5 py-0.5 text-xs font-medium text-indigo-600 md:inline-block"
-                >4</span
-              >
-            </a> -->
             </nav>
           </div>
         </div>
