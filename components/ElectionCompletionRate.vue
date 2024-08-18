@@ -5,13 +5,6 @@
         <div>
           <h6 class="block antialiased tracking-normal font-sans text-base font-semibold leading-relaxed text-blue-gray-900 mb-1">Electon Registeration Statistics</h6>
         </div>
-        <!-- <button aria-expanded="false" aria-haspopup="menu" id=":r5:" class="relative middle none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-8 max-w-[32px] h-8 max-h-[32px] rounded-lg text-xs text-blue-gray-500 hover:bg-blue-gray-500/10 active:bg-blue-gray-500/30" type="button">
-          <span class="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="currenColor" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" aria-hidden="true" class="h-6 w-6">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z"></path>
-            </svg>
-          </span>
-        </button> -->
       </div>
       <div class="p-6 overflow-x-scroll px-0 pt-0 pb-2">
         <table class="w-full min-w-[640px] table-auto">
@@ -55,13 +48,12 @@
   </div>
 </template>
 
-<script setup lang="ts">
-import { computed } from 'vue';
+<!-- <script setup lang="ts">
 import { useFetchAllUsers } from '@/composables/user/getAllUsers';
 
 const { usersByLevel, loading, usersList } = useFetchAllUsers();
 
-const calculateCompletion = (users, totalUsers) => {
+const calculateCompletion = (users: any, totalUsers: any) => {
   return totalUsers > 0 ? Math.min(Math.floor((users.length / totalUsers) * 100), 100) : 0;
 };
 
@@ -78,5 +70,51 @@ const levels = computed(() => {
     users: level.users.value,
     completion: calculateCompletion(level.users.value, level.total)
   }));
+});
+</script> -->
+
+<script setup lang="ts">
+import { computed, ref } from 'vue';
+import { useFetchAllUsers } from '@/composables/user/getAllUsers';
+
+const { usersByLevel, loading, usersList } = useFetchAllUsers();
+
+// Debugging: Log fetched user data
+console.log("Users by Level:", {
+  200: usersByLevel(200).value,
+  300: usersByLevel(300).value,
+  400: usersByLevel(400).value,
+  500: usersByLevel(500).value
+});
+
+const calculateCompletion = (users: any[], totalUsers: number) => {
+  if (!users || !Array.isArray(users)) {
+    console.error("Invalid users array:", users);
+    return 0;
+  }
+  return totalUsers > 0 ? Math.min(Math.floor((users.length / totalUsers) * 100), 100) : 0;
+};
+
+const levels = computed(() => {
+  const levelsData = [
+    { name: '200 Level', total: 113, users: usersByLevel(200).value },
+    { name: '300 Level', total: 69, users: usersByLevel(300).value },
+    { name: '400 Level', total: 60, users: usersByLevel(400).value },
+    { name: '500 Level', total: 46, users: usersByLevel(500).value },
+  ];
+
+  return levelsData.map(level => {
+    const users = level.users || [];
+    const completion = calculateCompletion(users, level.total);
+    
+    // Debugging: Log each level's data and calculated completion
+    console.log(`Level: ${level.name}`, { users, completion });
+
+    return {
+      ...level,
+      users,
+      completion
+    };
+  });
 });
 </script>

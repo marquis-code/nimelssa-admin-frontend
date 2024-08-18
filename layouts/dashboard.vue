@@ -40,12 +40,16 @@
                       <NuxtLink to="/dashboard/election" @click.prevent="isOpen = false"
                         :class="isActive('/dashboard/election') ? 'bg-[#0ba9b9] text-white' : 'text-gray-700 hover:text-indigo-600 hover:bg-gray-50'"
                         class="group flex gap-x-3 rounded-md p-2 py-3 text-base leading-6 font-semibold">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                          stroke="#4a4a4a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                          <path d="M22 17H2a3 3 0 0 0 3-3V9a7 7 0 0 1 14 0v5a3 3 0 0 0 3 3zm-8.27 4a2 2 0 0 1-3.46 0">
-                          </path>
-                        </svg>
+                        <img src="@/assets/icons/election.svg" alt="" class="h-6 w-6" />
                         Elections
+                      </NuxtLink>
+                    </li>
+                    <li>
+                      <NuxtLink to="/dashboard/candidates" @click.prevent="isOpen = false"
+                        :class="isActive('/dashboard/candidates') ? 'bg-[#0ba9b9] text-white' : 'text-gray-700 hover:text-indigo-600 hover:bg-gray-50'"
+                        class="group flex gap-x-3 rounded-md p-2 py-3 text-base leading-6 font-semibold">
+                        <img src="@/assets/icons/candidates.svg" alt="" class="h-6 w-6" />
+                        Candidates
                       </NuxtLink>
                     </li>
                   </ul>
@@ -96,13 +100,18 @@
                   <NuxtLink to="/dashboard/election"
                     :class="isActive('/dashboard/election') ? 'bg-[#0ba9b9] text-white' : 'text-gray-700 hover:text-indigo-600 hover:bg-gray-50'"
                     class="flex w-full text-gray-700 items-center gap-x-3 no-underline rounded-md px-3 py-2.5 leading-loose">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                      stroke="#4a4a4a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M22 17H2a3 3 0 0 0 3-3V9a7 7 0 0 1 14 0v5a3 3 0 0 0 3 3zm-8.27 4a2 2 0 0 1-3.46 0">
-                      </path>
-                    </svg>
+                    <img src="@/assets/icons/election.svg" alt="" class="h-6 w-6" />
 
                     Elections
+                  </NuxtLink>
+                </li>
+                <li>
+                  <NuxtLink to="/dashboard/candidates"
+                    :class="isActive('/dashboard/candidates') ? 'bg-[#0ba9b9] text-white' : 'text-gray-700 hover:text-indigo-600 hover:bg-gray-50'"
+                    class="flex w-full text-gray-700 items-center gap-x-3 no-underline rounded-md px-3 py-2.5 leading-loose">
+                    <img src="@/assets/icons/candidates.svg" alt="" class="h-6 w-6" />
+
+                    Candidates
                   </NuxtLink>
                 </li>
               </ul>

@@ -1,13 +1,13 @@
-import { adsApiFactory } from "@/apiFactory/ads";
+import { candidatesApiFactory } from "@/apiFactory/candidates";
 
 export const useGetSponsoredAdById = () => {
   const loading = ref(false);
-  const ad = ref(null);
+  const candidate = ref(null);
   const getSponsoredAdById = async (id: string) => {
     loading.value = true;
     try {
-      const response = await adsApiFactory.$_fetch_ads_by_id(id);
-      ad.value = response.data;
+      const response = await candidatesApiFactory.$_fetch_candidates_by_id(id);
+      candidate.value = response.data;
       return response;
     } catch (error: any) {
       useNuxtApp().$toast.error(error.message, {
@@ -20,5 +20,5 @@ export const useGetSponsoredAdById = () => {
     }
   };
 
-  return { getSponsoredAdById, ad, loading };
+  return { getSponsoredAdById, candidate, loading };
 };

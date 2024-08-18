@@ -1,6 +1,6 @@
 <template>
     <main>
-        <AdsSponsoredAdsTable />
+        <CandidatesTable />
     </main>
 </template>
 
