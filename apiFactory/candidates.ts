@@ -20,4 +20,12 @@ export const candidatesApiFactory = {
   $_delete_candidates(id: string | number) {
     return axiosInstance.delete(`/candidate/candidates/${id}`);
   },
+
+  $_batch_approve_matric(payload: Record<string, any>) {
+    return axiosInstance.post("/batch-approve-matric", payload);
+  },
+
+  $_batch_disapprove_matric(payload: Record<string, any>) {
+    return axiosInstance.post("/batch-disapprove-matric", payload);
+  },
 };

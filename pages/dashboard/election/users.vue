@@ -56,17 +56,23 @@
               level and status.
             </p>
           </div>
+          <select v-model="level">
+            <option value="200">200 Level</option>
+            <option value="300">300 Level</option>
+            <option value="400">400 Level</option>
+            <option value="500">500 Level</option>
+          </select>
           <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
           </div>
         </div>
        <div v-if="route.query.type === 'registered'">
-        <UsersList :users="usersList" v-if="usersList.length >= 0 && !loading" />
+        <UsersList :users="filteredTotalList" v-if="filteredTotalList.length >= 0 && !loading" />
        </div>
        <div v-if="route.query.type === 'approved'">
-        <ApprovedUsers :users="approvedUsers" v-if="approvedUsers.length >= 0 && !loading"  />
+        <ApprovedUsers :users="filteredApprovedList" v-if="filteredApprovedList.length >= 0 && !loading"  />
        </div>
        <div v-if="route.query.type === 'rejected'">
-        <RejectedUsers :users="notApprovedUsers" v-if="notApprovedUsers.length >= 0 && !loading" />
+        <RejectedUsers :users="filteredRejectedList" v-if="filteredRejectedList.length >= 0 && !loading" />
        </div>
         <div v-if="loading" class="h-32 mt-2 bg-slate-200 rounded animate-pulse"></div>
         <CoreEmptyState v-if="usersList.length <= 0 && !loading" title="No User available" desc="">
@@ -94,6 +100,44 @@ const handleTab = (item: string) => {
     }
   })
 }
+
+const level = ref(null)
+
+const filteredApprovedList = computed(() => {
+  if (approvedUsers.value.length) {
+    return approvedUsers.value.filter((user: any) => {
+      return level.value ? user.level === level.value : true;
+    });
+  }
+  return [];
+});
+
+const filteredRejectedList = computed(() => {
+    if (notApprovedUsers.value.length) {
+    return notApprovedUsers.value.filter((user: any) => {
+      return level.value ? user.level === level.value : true;
+    });
+  }
+  return [];
+})
+
+// const filteredInvalidList = computed(() => {
+//     if (usersList.value.length) {
+//     return usersList.value.filter((user: any) => {
+//       return level.value ? user.level === level.value : true;
+//     });
+//   }
+//   return [];
+// })
+
+const filteredTotalList = computed(() => {
+    if (usersList.value.length) {
+    return usersList.value.filter((user: any) => {
+      return level.value ? user.level === level.value : true;
+    });
+  }
+  return [];
+})
 
 const computedTitle = computed(() => {
    const titleMap = {

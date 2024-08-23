@@ -52,10 +52,18 @@
                         Candidates
                       </NuxtLink>
                     </li>
+                    <li>
+                      <NuxtLink to="/dashboard/result" @click.prevent="isOpen = false"
+                        :class="isActive('/dashboard/result') ? 'bg-[#0ba9b9] text-white' : 'text-gray-700 hover:text-indigo-600 hover:bg-gray-50'"
+                        class="group flex gap-x-3 rounded-md p-2 py-3 text-base leading-6 font-semibold">
+                        <img src="@/assets/icons/candidates.svg" alt="" class="h-6 w-6" />
+                        Election result
+                      </NuxtLink>
+                    </li>
                   </ul>
                 </li>
                 <li class="mt-auto">
-                  <a href="#" @click.prevent="logOut"
+                  <NuxtLink to="#" @click.prevent="logOut"
                     class="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-700 hover:bg-gray-50 hover:text-indigo-600">
                     <svg class="h-6 w-6 shrink-0 text-gray-400 group-hover:text-indigo-600" fill="none" viewBox="0 0 24 24"
                       stroke-width="1.5" stroke="currentColor" aria-hidden="true">
@@ -64,7 +72,7 @@
                       <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
                     Logout
-                  </a>
+                  </NuxtLink>
                 </li>
               </ul>
             </nav>
@@ -112,6 +120,15 @@
                     <img src="@/assets/icons/candidates.svg" alt="" class="h-6 w-6" />
 
                     Candidates
+                  </NuxtLink>
+                </li>
+                <li>
+                  <NuxtLink to="/dashboard/result"
+                    :class="isActive('/dashboard/result') ? 'bg-[#0ba9b9] text-white' : 'text-gray-700 hover:text-indigo-600 hover:bg-gray-50'"
+                    class="flex w-full text-gray-700 items-center gap-x-3 no-underline rounded-md px-3 py-2.5 leading-loose">
+                    <img src="@/assets/icons/result.svg" alt="" class="h-6 w-6" />
+
+                    Election results
                   </NuxtLink>
                 </li>
               </ul>

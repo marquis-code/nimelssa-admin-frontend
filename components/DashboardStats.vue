@@ -59,7 +59,7 @@
         </div>
         <div class="p-4 text-right">
           <p class="block antialiased font-sans text-sm leading-normal font-normal text-blue-gray-600">Electoral Candidates</p>
-          <h4 class="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">{{ candidates.length}}</h4>
+          <h4 class="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">{{ candidates?.length}}</h4>
         </div>
         <div class="border-t border-blue-gray-50 p-4">
           <!-- <p class="block antialiased font-sans text-base leading-relaxed font-normal text-blue-gray-600">
