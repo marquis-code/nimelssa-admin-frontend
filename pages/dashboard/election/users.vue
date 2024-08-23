@@ -48,7 +48,7 @@
         </div>
       </div>
       <div class="border border-gray-300 rounded-b-xl p-3">
-        <div class="sm:flex sm:items-center border p-3 rounded bg-white">
+        <div class="sm:flex sm:items-center border p-3 rounded bg-white space-y-4 lg:space-y-0">
           <div class="sm:flex-auto">
             <h1 class="text-base font-semibold leading-6 text-gray-900">{{computedTitle}}</h1>
             <p class="mt-2 text-sm text-gray-700">
@@ -56,12 +56,16 @@
               level and status.
             </p>
           </div>
-          <select v-model="level">
+         <div>
+          <p class="text-sm text-gray-600">Filter by level</p>
+          <select v-model="level" class="px-6 rounded-md outline-none">
+            <option value="">Select level</option>
             <option value="200">200 Level</option>
             <option value="300">300 Level</option>
             <option value="400">400 Level</option>
             <option value="500">500 Level</option>
           </select>
+         </div>
           <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
           </div>
         </div>
