@@ -320,7 +320,7 @@ import { useApproveMatric } from "@/composables/user/approveMatric";
 import { useRejectMatric } from "@/composables/user/rejectMatric";
 const { approveMatricNumber, loading: approving } = useApproveMatric();
 const { rejectMatricNumber, loading: rejecting } = useRejectMatric();
-const {  updateUser, setEditUser, form, loading: updating, selectedUser, errors, resetForm } = useUpdateUser();
+const { editUser, setEditUser, form, loading: updating, selectedUser, errors, resetForm } = useUpdateUser();
 const { deleteUser, loading: deleting } = useDeleteUser()
 const { batchApproveMatric, matricList: approvalMatricList, loading: batchApproving, setMatricNumbers: setApprovalMatric } = useBatchApproveMatric()
 const { batchDisApproveMatric, matricList: disapprovalMatricList, loading: batchDisApproving, setMatricNumbers: setDisApprovalMatric } = useBatchDisApproveMatric()
@@ -405,9 +405,10 @@ const indeterminate = computed(
 const submitForm = async () => {
     if (selectedUser.value) {
         setEditUser(form.value);
-      await updateUser().then(() => {
+      await editUser().then(async (res) => {
+        console.log(res, 'tes here')
         showSlideOver.value = false;
-        getAllUsers(); // Refresh the candidates list
+        await fetchUsers(); // Refresh the candidates list
       });
     } 
   };

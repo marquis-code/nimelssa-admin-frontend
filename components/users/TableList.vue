@@ -212,92 +212,16 @@
         </div>
       </section>
     </CoreBaseModal>
-
-    <!-- <CoreSlideOver :show="showEditModal" @update:show="showEditModal = false" title="Edit User Information"
-      description="Get started by filling in the information below to update a user">
-      <template #content>
-        <div>
-          <label for="first-name" class="block text-xs font-medium leading-6 text-gray-900">First Name</label>
-          <div class="mt-1">
-            <input type="text" v-model="payload.fname" name="first-name" id="first-name"
-              class="block w-full rounded-md border-[0.6px] px-3  outline-none font-light py-3 text-gray-900 shadow-sm ">
-          </div>
-        </div>
-
-        <div>
-          <label for="last-name" class="block text-xs font-medium leading-6 text-gray-900">Last Name</label>
-          <div class="mt-1">
-            <input type="text" v-model="payload.lname" name="last-name" id="last-name"
-              class="block w-full rounded-md border-[0.6px] px-3  outline-none font-light py-3 text-gray-900 shadow-sm ">
-          </div>
-        </div>
-
-        <div>
-          <label for="email" class="block text-xs font-medium leading-6 text-gray-900">Email</label>
-          <div class="mt-1">
-            <input type="email" v-model="payload.email" name="email" id="email"
-              class="block w-full rounded-md border-[0.6px] px-3  outline-none font-light py-3 text-gray-900 shadow-sm ">
-          </div>
-        </div>
-
-        <div>
-          <label for="password" class="block text-xs font-medium leading-6 text-gray-900">Password</label>
-          <div class="mt-1">
-            <input type="password" v-model="payload.password" name="password" id="password"
-              class="block w-full rounded-md border-[0.6px] px-3  outline-none font-light py-3 text-gray-900 shadow-sm ">
-          </div>
-        </div>
-
-        <div>
-          <label for="country-code" class="block text-xs font-medium leading-6 text-gray-900">Country Code</label>
-          <div class="mt-1">
-            <input type="tel" v-model="payload.countryCode" name="country-code" id="country-code"
-              class="block w-full rounded-md border-[0.6px] px-3  outline-none font-light py-3 text-gray-900 shadow-sm ">
-          </div>
-        </div>
-
-        <div>
-          <label for="phone" class="block text-xs font-medium leading-6 text-gray-900">Phone</label>
-          <div class="mt-1">
-            <input type="tel" v-model="payload.phone" name="phon" id="phone"
-              class="block w-full rounded-md border-[0.6px] px-3  outline-none font-light py-3 text-gray-900 shadow-sm ">
-          </div>
-        </div>
-
-        <div>
-          <label for="handle" class="block text-xs font-medium leading-6 text-gray-900">Handle</label>
-          <div class="mt-1">
-            <input type="text" v-model="payload.handle" name="handle" id="handle"
-              class="block w-full rounded-md border-[0.6px] px-3  outline-none font-light py-3 text-gray-900 shadow-sm ">
-          </div>
-        </div>
-        </div>
-      </template>
-
-<template #actionsBtn>
-        <div class="flex flex-shrink-0 justify-end px-4 py-4">
-          <button type="button" @click="showEditModal = false"
-            class="rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Cancel</button>
-          <button type="submit" :disabled="editingUser" @click="proceedToEdit"
-            class="ml-4 disabled:cursor-not-allowed disabled:opacity-25 inline-flex justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">{{editingUser
-            ? 'editing...' : 'Save'}}</button>
-        </div>
-      </template>
-</CoreSlideOver> -->
   </main>
 </template>
 
 <script setup lang="ts">
 import moment from 'moment'
 import VueTailwindDatepicker from "vue-tailwind-datepicker";
-import { useFetchUserStories } from '@/composables/user/fetchUserStories'
-import { useEditUser } from '@/composables/user/editUser'
-import { useRemoveUser } from '@/composables/user/removeUser'
+import { useUpdateUser } from '@/composables/user/editUser';
 import { useDeactivateUser } from '@/composables/user/deactivateUser'
 const { deactivateUser, loading } = useDeactivateUser()
-const { editUser, loading: editingUser, payload } = useEditUser()
-const { removeUser, loading: processing } = useRemoveUser()
-const { fetchUserStories, userStoriesList, loading: loadingUserStories } = useFetchUserStories()
+const { editUser, loading: editingUser, form: payload } = useUpdateUser()
 const selectedPeople = ref([]) as any;
 const selectedOption = ref('') as any;
 const selectedUser = ref({}) as any
@@ -343,24 +267,13 @@ const handleEditUer = (user: any) => {
 
 }
 
-const proceedToEdit = () => {
-  editUser(selectedUser.value.id).then((data) => {
+const proceedToRemove = () => {
+  editUser().then((data) => {
     useNuxtApp().$toast.success('User was edited successfully', {
       autoClose: 5000,
       dangerouslyHTMLString: true,
     });
     showEditModal.value = false
-  })
-}
-
-
-const proceedToRemove = () => {
-  removeUser(selectedUser.value.id).then((data) => {
-    useNuxtApp().$toast.success('User was removed successfully', {
-      autoClose: 5000,
-      dangerouslyHTMLString: true,
-    });
-    openRemoveUserModal.value = false
   })
 }
 
@@ -410,14 +323,6 @@ const toggleUserStatus = (user: any) => {
 const generateInitials = (fname: string, lname: string) => {
   return `${fname.charAt(0).toUpperCase()}${lname.charAt(0).toUpperCase()}`;
 };
-
-// const getUserPods = async (user: any) => {
-//   await fetchUserStories(user.id).then(() => {
-//     return userStoriesList.value.length
-//   })
-// }
-
-
 </script>
 
 <style></style>

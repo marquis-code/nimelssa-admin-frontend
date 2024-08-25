@@ -60,7 +60,7 @@ export const useUpdateUser = () => {
     };
   };
 
-  const updateUser = async () => {
+  const editUser = async () => {
     if (!validateForm()) return;
     try {
       loading.value = true;
@@ -91,7 +91,7 @@ export const useUpdateUser = () => {
   };
   
   return {
-    updateUser,
+    editUser,
     resetForm,
     form,
     loading,
