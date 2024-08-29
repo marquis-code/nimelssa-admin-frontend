@@ -16,6 +16,7 @@
             <div class="flex-1">
               <p class="font-bold text-sm">{{ candidate.candidate.name }}</p>
               <p class="text-sm">Votes: {{ candidate.votes }} ({{ candidate.percentage }}%)</p>
+              <p class="text-sm">Witheld votes: {{ 100 - candidate.percentage }}</p>
             </div>
             <span class="text-xs" :class="getLabelClass(candidate.status)">
               {{ candidate.status === 'Winner' ? 'Winner' : 'Not Enough Votes to Win' }}
