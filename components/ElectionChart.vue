@@ -16,7 +16,7 @@
             <div class="flex-1">
               <p class="font-bold text-sm">{{ candidate.candidate.name }}</p>
               <p class="text-sm">Votes: {{ candidate.votes }} ({{ candidate.percentage }}%)</p>
-              <p class="text-sm">Witheld votes: {{ 100 - candidate.percentage }}</p>
+              <p class="text-sm">Witheld votes: {{ totalVoters - candidate.votes }} ({{(totalVoters - candidate.votes)/100}}%)</p>
             </div>
             <span class="text-xs" :class="getLabelClass(candidate.status)">
               {{ candidate.status === 'Winner' ? 'Winner' : 'Not Enough Votes to Win' }}
@@ -50,6 +50,7 @@ interface ElectionData {
 
 const props = defineProps<{
   electionData: ElectionData | null;
+  totalVoters: null;
 }>();
 
 const chartOptions = ref({
