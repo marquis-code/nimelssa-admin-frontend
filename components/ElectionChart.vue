@@ -25,10 +25,18 @@
         <div class="space-y-5">
           <div v-for="candidate in candidates" :key="candidate.candidate._id" class="flex items-center space-x-4">
             <CoreImageZoom v-if="candidate.candidate.image" class="h-10 w-10" :src="candidate.candidate.image" />
-            <div class="flex-1">
+            <div class="flex-1" v-if="!candidate.candidate.position.startsWith('SENATE')">
               <p class="font-bold text-sm">{{ candidate.candidate.name }}</p>
               <p class="text-sm">Votes: {{ candidate.votes }} ({{ candidate.percentage }}%)</p>
               <p class="text-sm">Witheld votes: {{ totalVoters - candidate.votes }} ({{(totalVoters - candidate.votes)/100}}%)</p>
+            </div>
+            <!-- {{ voteMapCount(candidate.candidate.level) }} -->
+            <div v-else>
+              <p class="font-bold text-sm">{{ candidate.candidate.name }}</p>
+              <p class="text-sm">Votes: {{ candidate.votes }} 
+                <!-- ({{ (candidate.votes / voteMapCount(candidate.candidate.level)) * 100 }}%) -->
+              </p>
+              <p class="text-sm">Witheld votes: {{ Number(candidate.votes) - Number(voteMapCount(candidate.candidate.level)) }}</p>
             </div>
             <span class="text-xs" :class="getLabelClass(candidate.status)">
               {{ candidate.status === 'Winner' ? 'Winner' : 'Not Enough Votes to Win' }}
@@ -63,9 +71,19 @@ interface ElectionData {
 const props = defineProps<{
   electionData: ElectionData | null;
   totalVoters: null;
-  resultGrouping: null
+  resultGrouping: {
+    type: Object
+  },
   loading: boolean
 }>();
+
+const voteMapCount = (level: any) => {
+   const countMap = {
+     [level]: props.resultGrouping[level]?.count
+   }
+   return countMap[level];
+}
+
 
 const chartOptions = ref({
   chart: {
