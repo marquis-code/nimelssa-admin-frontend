@@ -122,7 +122,7 @@
                     Candidates
                   </NuxtLink>
                 </li>
-                <li>
+                <li class="">
                   <NuxtLink to="/dashboard/result"
                     :class="isActive('/dashboard/result') ? 'bg-[#0ba9b9] text-white' : 'text-gray-700 hover:text-indigo-600 hover:bg-gray-50'"
                     class="flex w-full text-gray-700 items-center gap-x-3 no-underline rounded-md px-3 py-2.5 leading-loose">
@@ -180,7 +180,7 @@
 <script setup lang="ts">
 import { useKeyboardShortcut } from '@/composables/core/useKeyboardShortcut';
 import { useLogin } from '@/composables/auth/login'
-const { localstorageData, logOut } = useLogin()
+const { localstorageData, user, logOut } = useLogin()
 const isOpen = ref(false)
 const route = useRoute()
 const router = useRouter()
