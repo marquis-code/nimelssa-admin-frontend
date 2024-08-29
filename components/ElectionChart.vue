@@ -4,6 +4,18 @@
     <div>
       <apexchart width="100%" type="bar" :options="chartOptions" :series="seriesData" />
     </div>
+
+    <div>
+      <h2 class="text-lg font-bold">Summary of Voters</h2>
+      <dl class="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-3">
+        <div  v-for="(value, key) in resultGrouping" :key="key" class="overflow-hidden border rounded-lg bg-white px-4 py-5 shadow sm:p-6">
+          <dt class="truncate text-sm font-medium text-gray-500">{{key}} Level</dt>
+          <dd class="mt-1 text-3xl font-semibold tracking-tight text-gray-900">{{value.count}}</dd>
+        </div>
+      </dl>
+    
+    
+    </div>
     
     <!-- Summary of Candidates -->
     <div class="space-y-4">
@@ -51,6 +63,8 @@ interface ElectionData {
 const props = defineProps<{
   electionData: ElectionData | null;
   totalVoters: null;
+  resultGrouping: null
+  loading: boolean
 }>();
 
 const chartOptions = ref({
