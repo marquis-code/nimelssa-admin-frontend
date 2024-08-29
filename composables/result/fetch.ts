@@ -1,6 +1,6 @@
 import { resultApiFactory } from "@/apiFactory/results";
 
-export const useFetchReportedStories = () => {
+export const useFetchResults = () => {
   const electionResultsList = ref([]);
   const loading = ref(false);
   const fetchElectionResults = async () => {
