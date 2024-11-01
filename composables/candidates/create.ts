@@ -80,7 +80,11 @@ const positionsList = ref([
     {
         name: 'Senate 500 Level',
         code: 'SENATE_500'
-    }
+    },
+       {
+        name: 'Welfare Secretary',
+        code: 'WELFARE_SECRETARY'
+    },
 ])
 
   
