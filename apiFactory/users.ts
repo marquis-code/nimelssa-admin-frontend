@@ -22,4 +22,10 @@ export const userApiFactory = {
   batchDisApproveMatric(payload: any) {
     return axiosInstance.post('/auth/batch-disapprove-matric', payload);
   },
+  batchUpdateMatric(payload: any) {
+    return axiosInstance.post('/auth/update-academic-level', payload);
+  },
+  batchDeleteUsers(payload: any) {
+    return axiosInstance.post('/auth//batch-delete-users', payload);
+  },
 };
