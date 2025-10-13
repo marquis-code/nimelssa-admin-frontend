@@ -1,6 +1,6 @@
 <template>
     <main class="space-y-10">
-      <div class="mt-12">
+      <div class="space-y-8">
        <DashboardStats :usersList="usersList" :approvedMatric="approvedUsers" :rejectedMatric="notApprovedUsers" />
         
        <ElectionCompletionRate />

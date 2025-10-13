@@ -26,7 +26,7 @@
                         <img
                         alt="Login Animated Image"
                         src="@/assets/img/transparent-logo.png"
-                        class="object-cover object-center"
+                        class="object-cover h-44 w-44 object-center"
                       />
                         <div v-if="route.query.page === 'login'" class="">
                             <h2 class="mt-6 text-center text-2xl font-bold sm:text-3xl md:text-xl">

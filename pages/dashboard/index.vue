@@ -1,13 +1,12 @@
 <template>
-  <main class="space-y-10">
-    <div class="mt-12">
+  <main class="">
+    <div class="space-y-6">
       <DashboardStats :candidates="candidates" :loadingCandidates="loadingCandidates" :loading="loading" :usersList="usersList" :approvedMatric="approvedUsers" :rejectedMatric="notApprovedUsers" />
       
      <ElectionCompletionRate />
     </div>
   </main>
 </template>
-xx
 <script setup lang="ts">
 import { useFetchAllUsers } from '@/composables/user/getAllUsers'
 import { useGetAllCandidates } from '@/composables/candidates/fetch';
