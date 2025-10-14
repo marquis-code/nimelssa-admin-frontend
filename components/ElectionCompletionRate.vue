@@ -122,9 +122,9 @@ const getProgressColor = (completion: number) => {
 
 const levels = computed(() => {
   const levelsData = [
-    { name: '200 Level', total: 113, users: usersByLevel(200).value },
-    { name: '300 Level', total: 69, users: usersByLevel(300).value },
-    { name: '400 Level', total: 60, users: usersByLevel(400).value },
+    { name: '200 Level', total: 78, users: usersByLevel(200).value },
+    { name: '300 Level', total: 105, users: usersByLevel(300).value },
+    { name: '400 Level', total: 71, users: usersByLevel(400).value },
     { name: '500 Level', total: 46, users: usersByLevel(500).value },
   ];
 
