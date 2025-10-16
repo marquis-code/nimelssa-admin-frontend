@@ -27,7 +27,7 @@ export const useApproveMatric = () => {
       }).then(async (result) => {
         if (result.isConfirmed) {
             await fetchUsers().then(() => {
-              window.location.reload()
+              // window.location.reload()
             })
           Swal.fire({
             icon: "success",

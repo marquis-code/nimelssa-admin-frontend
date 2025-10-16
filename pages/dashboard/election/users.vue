@@ -146,7 +146,7 @@ const computedTitle = computed(() => {
   const titleMap = {
     registered: "Total Users",
     approved: "Approved Voters",
-    rejected: "Rejected Voters",
+    rejected: "Awaiting Approval",
     invalid: "Invalid Voters",
   };
 
