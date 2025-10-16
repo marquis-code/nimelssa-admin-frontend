@@ -26,7 +26,9 @@ export const useApproveMatric = () => {
         allowOutsideClick: () => !Swal.isLoading(),
       }).then(async (result) => {
         if (result.isConfirmed) {
-            await fetchUsers()
+            await fetchUsers().then(() => {
+              window.location.reload()
+            })
           Swal.fire({
             icon: "success",
             title: "Success",
