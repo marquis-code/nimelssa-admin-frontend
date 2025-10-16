@@ -9,7 +9,7 @@
         </div>
         <button
           @click="downloadPDF"
-          :disabled="downloading || !users || users.length === 0"
+          :disabled="downloading || !filteredUsers || filteredUsers.length === 0"
           class="inline-flex items-center px-4 py-2.5 text-sm font-medium rounded-lg text-white bg-green-600 hover:bg-green-700 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           <svg
@@ -48,6 +48,36 @@
           </svg>
           {{ downloading ? 'Generating PDF...' : 'Download as PDF' }}
         </button>
+      </div>
+
+      <!-- Search Bar -->
+      <div class="mb-4">
+        <div class="relative">
+          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+            <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </div>
+          <input
+            v-model="searchQuery"
+            type="text"
+            placeholder="Search by name or matric number..."
+            class="block w-full pl-10 pr-10 py-3 border border-gray-300 rounded-lg leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-2 focus:ring-green-500 focus:border-green-500 text-sm transition-all duration-200"
+          />
+          <div v-if="searchQuery" class="absolute inset-y-0 right-0 pr-3 flex items-center">
+            <button
+              @click="clearSearch"
+              class="text-gray-400 hover:text-gray-600 focus:outline-none"
+            >
+              <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div v-if="searchQuery && filteredUsers" class="mt-2 text-sm text-gray-600">
+          Found {{ filteredUsers.length }} {{ filteredUsers.length === 1 ? 'user' : 'users' }} matching "{{ searchQuery }}"
+        </div>
       </div>
 
       <!-- Action Bar -->
@@ -114,9 +144,9 @@
                   <input
                     type="checkbox"
                     class="h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-500 cursor-pointer"
-                    :checked="indeterminate || selectedPeople.length === props.users.length"
+                    :checked="indeterminate || selectedPeople.length === filteredUsers.length"
                     :indeterminate="indeterminate"
-                    @change="selectedPeople = $event.target.checked ? props.users.map((p) => p.matric) : []"
+                    @change="selectedPeople = $event.target.checked ? filteredUsers.map((p) => p.matric) : []"
                   />
                 </th>
                 <th scope="col" class="px-4 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
@@ -138,7 +168,7 @@
             </thead>
             <tbody class="bg-white divide-y-[0.5px] divide-gray-50">
               <tr
-                v-for="person in users"
+                v-for="person in filteredUsers"
                 :key="person.matric"
                 :class="[
                   'hover:bg-gray-50 transition-colors duration-150',
@@ -161,11 +191,13 @@
                 </td>
                 <td class="px-4 py-4">
                   <div class="text-sm font-medium text-gray-900">
-                    {{ person.firstname }} {{ person.lastname }}
+                    <span v-html="highlightMatch(person.firstname + ' ' + person.lastname)"></span>
                   </div>
                 </td>
                 <td class="px-4 py-4">
-                  <div class="text-sm text-gray-600 font-mono">{{ person.matric }}</div>
+                  <div class="text-sm text-gray-600 font-mono">
+                    <span v-html="highlightMatch(person.matric)"></span>
+                  </div>
                 </td>
                 <td class="px-4 py-4">
                   <div class="text-sm text-gray-600">{{ person.level }} Level</div>
@@ -227,7 +259,7 @@
           </table>
 
           <!-- Empty State -->
-          <div v-if="!users || users.length === 0" class="text-center py-12">
+          <div v-if="!filteredUsers || filteredUsers.length === 0" class="text-center py-12">
             <svg
               class="mx-auto h-12 w-12 text-gray-400"
               fill="none"
@@ -241,15 +273,20 @@
                 d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"
               />
             </svg>
-            <h3 class="mt-2 text-sm font-medium text-gray-900">No users found</h3>
-            <p class="mt-1 text-sm text-gray-500">No users to display.</p>
+            <h3 class="mt-2 text-sm font-medium text-gray-900">
+              {{ searchQuery ? 'No matching users found' : 'No users found' }}
+            </h3>
+            <p class="mt-1 text-sm text-gray-500">
+              {{ searchQuery ? 'Try adjusting your search terms' : 'No users to display.' }}
+            </p>
           </div>
         </div>
       </div>
 
       <!-- Total Count -->
-      <div v-if="users && users.length > 0" class="mt-4 text-sm text-gray-500">
-        Showing {{ users.length }} {{ users.length === 1 ? 'user' : 'users' }}
+      <div v-if="filteredUsers && filteredUsers.length > 0" class="mt-4 text-sm text-gray-500">
+        Showing {{ filteredUsers.length }} {{ filteredUsers.length === 1 ? 'user' : 'users' }}
+        <span v-if="searchQuery"> matching your search</span>
       </div>
     </div>
 
@@ -695,6 +732,7 @@ const deletingUser = ref(null);
 const levelDropdownOpen = ref(false);
 const batchDropdownOpen = ref(false);
 const downloading = ref(false);
+const searchQuery = ref('');
 
 const levelList = ref([
   { name: '100 Level', code: '100' },
@@ -715,18 +753,51 @@ const props = defineProps({
   },
 });
 
+// Computed property for filtered users based on search query
+const filteredUsers = computed(() => {
+  if (!props.users) return [];
+  
+  if (!searchQuery.value.trim()) {
+    return props.users;
+  }
+
+  const query = searchQuery.value.toLowerCase().trim();
+  
+  return props.users.filter(user => {
+    const fullName = `${user.firstname} ${user.lastname}`.toLowerCase();
+    const matric = user.matric.toLowerCase();
+    
+    return fullName.includes(query) || matric.includes(query);
+  });
+});
+
 const indeterminate = computed(
   () =>
     selectedPeople.value.length > 0 &&
-    selectedPeople.value.length < props.users.length
+    selectedPeople.value.length < filteredUsers.value.length
 );
+
+// Function to clear search
+const clearSearch = () => {
+  searchQuery.value = '';
+};
+
+// Function to highlight matching text
+const highlightMatch = (text: string) => {
+  if (!searchQuery.value.trim()) {
+    return text;
+  }
+
+  const query = searchQuery.value.trim();
+  const regex = new RegExp(`(${query})`, 'gi');
+  return text.replace(regex, '<mark class="bg-yellow-200 text-gray-900 font-medium">$1</mark>');
+};
 
 // PDF Download functionality
 const downloadPDF = async () => {
   downloading.value = true
 
   try {
-    // Dynamic import of html2pdf.js
     const html2pdf = (await import('html2pdf.js')).default
 
     const element = document.getElementById('pdf-content')
@@ -748,7 +819,6 @@ const downloadPDF = async () => {
       pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
     }
 
-    // Generate PDF
     await html2pdf().set(opt).from(element).save()
   } catch (error) {
     console.error('Error generating PDF:', error)
@@ -929,14 +999,17 @@ const proceedToUpdtate = async () => {
 </script>
 
 <style scoped>
-/* Custom checkbox styling for indeterminate state */
 input[type="checkbox"]:indeterminate {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 16 16'%3e%3cpath stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 8h8'/%3e%3c/svg%3e");
   background-color: #16a34a;
   border-color: #16a34a;
 }
 
-/* Print styles for better PDF output */
+mark {
+  padding: 0.1em 0.2em;
+  border-radius: 0.2em;
+}
+
 @media print {
   .print\:hidden {
     display: none !important;
@@ -957,6 +1030,11 @@ input[type="checkbox"]:indeterminate {
   
   thead {
     display: table-header-group;
+  }
+  
+  mark {
+    background: transparent;
+    color: inherit;
   }
 }
 </style>
