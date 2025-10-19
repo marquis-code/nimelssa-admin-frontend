@@ -85,6 +85,10 @@ const positionsList = ref([
         name: 'Welfare Secretary',
         code: 'WELFARE_SECRETARY'
     },
+    {
+        name: 'Assistant Welfare Secretary',
+        code: 'ASSISTANT_WELFARE_SECRETARY'
+    },
 ])
 
   
